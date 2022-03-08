@@ -4,9 +4,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:kika/components/bookcard.dart';
 
 import 'package:kika/components/color.dart';
+import 'package:kika/model/book_model.dart';
+import 'package:kika/provider/books.dart';
 import 'package:kika/screens/book_details.dart';
 import 'package:kika/screens/favorites.dart';
 import 'package:kika/screens/search.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatelessWidget {
   static const route = '/Home';
@@ -67,95 +70,138 @@ class Home extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w),
-        child: Column(
+        child: SingleChildScrollView(
+            child: Column(
           children: [
-            SeeAll(
-              title: "Books for you",
-              seeall: "See All",
+            NewWidget(
+              genre: "Fiction",
             ),
             SizedBox(
-              height: 10.h,
+              height: 8,
             ),
-            SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.of(context)
-                          .pushReplacementNamed(BookDetails.route);
-                    },
-                    child: BookCard(
-                        imgPath: "assets/images/testimage.png",
-                        title: "Half of yellow sun",
-                        Author: " Chimanmada Adichie"),
-                  ),
-                  BookCard(
-                      imgPath: "assets/images/testimage.png",
-                      title: "Half of yellow sun",
-                      Author: " Chimanmada Adichie"),
-                  BookCard(
-                      imgPath: "assets/images/testimage.png",
-                      title: "Half of yellow sun",
-                      Author: " Chimanmada Adichie")
-                ],
-              ),
-            ),
-            SeeAll(
-              title: "Trending Book",
-              seeall: "See All",
+            NewWidget(
+              genre: "Science",
             ),
             SizedBox(
-              height: 10.h,
-            ),
-            SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Row(
-                children: [
-                  BookCard(
-                      imgPath: "assets/images/testimage.png",
-                      title: "Half of yellow sun",
-                      Author: " Chimanmada Adichie"),
-                  BookCard(
-                      imgPath: "assets/images/testimage.png",
-                      title: "Half of yellow sun",
-                      Author: " Chimanmada Adichie"),
-                  BookCard(
-                      imgPath: "assets/images/testimage.png",
-                      title: "Half of yellow sun",
-                      Author: " Chimanmada Adichie")
-                ],
-              ),
-            ),
-            SeeAll(
-              title: "BestSellers ",
-              seeall: "See All",
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Row(
-                children: [
-                  BookCard(
-                      imgPath: "assets/images/testimage.png",
-                      title: "Half of yellow sun",
-                      Author: " Chimanmada Adichie"),
-                  BookCard(
-                      imgPath: "assets/images/testimage.png",
-                      title: "Half of yellow sun",
-                      Author: " Chimanmada Adichie"),
-                  BookCard(
-                      imgPath: "assets/images/testimage.png",
-                      title: "Half of yellow sun",
-                      Author: " Chimanmada Adichie")
-                ],
-              ),
+              height: 8,
             ),
           ],
-        ),
+        )),
       ),
+    );
+  }
+}
+
+class NewWidget extends StatelessWidget {
+  NewWidget({
+    Key? key,
+    required this.genre,
+  }) : super(key: key);
+
+  final String genre;
+
+  @override
+  Widget build(BuildContext context) {
+    var booksProvider = Provider.of<BooksProvider>(context);
+    return Column(
+      children: [
+        SeeAll(
+          title: "$genre",
+          seeall: "See All",
+        ),
+        SizedBox(
+          height: 10.h,
+        ),
+        SizedBox(
+            height: 220.h,
+            child: FutureBuilder(
+                future: booksProvider.bookCategoryList("$genre"),
+                builder: (context, snapshot) {
+                  final books = booksProvider.books!;
+                  return ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: booksProvider.books!.length,
+                      itemBuilder: (context, index) {
+                        String imgPath =
+                            books[index].imageLinks?.thumbnail ?? 'ImagePath';
+                        String author = books[index].authors != null &&
+                                books[index].authors!.isNotEmpty
+                            ? books[index].authors![0]
+                            : 'Author';
+                        String title = books[index].title ?? 'Title';
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return BookDetails(
+                                book: books[index],
+                              );
+                            }));
+                          },
+                          child: BookCard(
+                              imgPath: imgPath, title: title, Author: author),
+                        );
+                      });
+                })),
+      ],
+    );
+  }
+}
+
+class NewWidget2 extends StatelessWidget {
+  NewWidget2({
+    Key? key,
+    required this.genre,
+  }) : super(key: key);
+
+  final String genre;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SeeAll(
+          title: "$genre",
+          seeall: "See All",
+        ),
+        SizedBox(
+          height: 10.h,
+        ),
+        SizedBox(
+          height: 220.h,
+          child: Consumer<BooksProvider>(builder: (context, books, child) {
+            books.bookCategoryList("Science");
+            return books.books == null
+                ? Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: books.books!.length,
+                    itemBuilder: (context, index) {
+                      String imgPath =
+                          books.books![index].imageLinks?.thumbnail ??
+                              'ImagePath';
+                      String author = books.books![index].authors != null &&
+                              books.books![index].authors!.isNotEmpty
+                          ? books.books![index].authors![0]
+                          : 'Author';
+                      String title = books.books![index].title ?? 'Title';
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return BookDetails(
+                              book: books.books![index],
+                            );
+                          }));
+                        },
+                        child: BookCard(
+                            imgPath: imgPath, title: title, Author: author),
+                      );
+                    });
+          }),
+        ),
+      ],
     );
   }
 }
@@ -180,24 +226,24 @@ class SeeAll extends StatelessWidget {
           title!,
           style: GoogleFonts.poppins(
             color: textColor,
-            fontSize: 14.sp,
+            fontSize: 18.sp,
             height: 21 / 14,
             fontWeight: FontWeight.w600,
           ),
         ),
         Spacer(),
-        GestureDetector(
-          onTap: onPressed,
-          child: Text(
-            seeall!,
-            style: GoogleFonts.poppins(
-              color: Colors.black.withOpacity(0.5),
-              fontSize: 14.sp,
-              height: 21 / 14,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ),
+        // GestureDetector(
+        //   onTap: onPressed,
+        //   child: Text(
+        //     seeall!,
+        //     style: GoogleFonts.poppins(
+        //       color: Colors.black.withOpacity(0.5),
+        //       fontSize: 14.sp,
+        //       height: 21 / 14,
+        //       fontWeight: FontWeight.w600,
+        //     ),
+        //   ),
+        // ),
       ],
     );
   }

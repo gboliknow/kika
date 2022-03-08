@@ -5,123 +5,127 @@ import 'package:hexcolor/hexcolor.dart';
 
 import 'package:kika/components/appbutton.dart';
 import 'package:kika/components/color.dart';
+import 'package:kika/model/book_model.dart';
 import 'package:kika/screens/homescreen.dart';
 
-class BookPreview extends StatelessWidget {
-  static const route = '/BookPreview';
-  const BookPreview({Key? key}) : super(key: key);
+// class BookPreview extends StatelessWidget {
+//   static const route = '/BookPreview';
+//   const BookPreview({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            Container(
-              height: 300.h,
-              color: HexColor("#79a377"),
-              padding: EdgeInsets.only(top: 10),
-              child: Stack(
-                children: [
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        SizedBox(
-                          width: 12.w,
-                        ),
-                        Image.asset(
-                          "assets/images/search.png",
-                          width: 20.w,
-                          height: 20.h,
-                        ),
-                        SizedBox(
-                          width: 12.w,
-                        ),
-                        Image.asset(
-                          "assets/images/unfavorite.png",
-                          width: 20.w,
-                          height: 20.h,
-                        ),
-                        SizedBox(
-                          width: 12.w,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Image.asset(
-                      "assets/images/testimage.png",
-                      width: 170.w,
-                      height: 270.h,
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      height: 71.h,
-                      width: double.infinity,
-                      color: Colors.black38,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 8),
-                        child: Row(
-                          children: [
-                            RichText(
-                              text: TextSpan(
-                                text: 'The Psychology of Money \n',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 16.sp,
-                                  height: 24 / 16,
-                                  color: Colors.white,
-                                ),
-                                children: [
-                                  TextSpan(
-                                    text: 'Morgan Housel',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 14.sp,
-                                      color: primaryColor,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Spacer(),
-                            Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: AppButton(
-                                buttonText: "About book",
-                                textSize: 14.sp,
-                                buttonWidth: 117.w,
-                                textColor: Colors.white,
-                                backgroundColor: primaryColor,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: SafeArea(
+//         child: Column(
+//           children: [
+//             Container(
+//               height: 300.h,
+//               color: HexColor("#79a377"),
+//               padding: EdgeInsets.only(top: 10),
+//               child: Stack(
+//                 children: [
+//                   Align(
+//                     alignment: Alignment.topLeft,
+//                     child: Row(
+//                       mainAxisAlignment: MainAxisAlignment.end,
+//                       children: [
+//                         SizedBox(
+//                           width: 12.w,
+//                         ),
+//                         Image.asset(
+//                           "assets/images/search.png",
+//                           width: 20.w,
+//                           height: 20.h,
+//                         ),
+//                         SizedBox(
+//                           width: 12.w,
+//                         ),
+//                         Image.asset(
+//                           "assets/images/unfavorite.png",
+//                           width: 20.w,
+//                           height: 20.h,
+//                         ),
+//                         SizedBox(
+//                           width: 12.w,
+//                         ),
+//                       ],
+//                     ),
+//                   ),
+//                   Align(
+//                     alignment: Alignment.topCenter,
+//                     child: Image.asset(
+//                       "assets/images/testimage.png",
+//                       width: 170.w,
+//                       height: 270.h,
+//                     ),
+//                   ),
+//                   Align(
+//                     alignment: Alignment.bottomCenter,
+//                     child: Container(
+//                       height: 71.h,
+//                       width: double.infinity,
+//                       color: Colors.black38,
+//                       child: Padding(
+//                         padding: const EdgeInsets.symmetric(
+//                             horizontal: 16, vertical: 8),
+//                         child: Row(
+//                           children: [
+//                             RichText(
+//                               text: TextSpan(
+//                                 text: 'The Psychology of Money \n',
+//                                 style: TextStyle(
+//                                   fontWeight: FontWeight.w600,
+//                                   fontSize: 16.sp,
+//                                   height: 24 / 16,
+//                                   color: Colors.white,
+//                                 ),
+//                                 children: [
+//                                   TextSpan(
+//                                     text: 'Morgan Housel',
+//                                     style: TextStyle(
+//                                       fontWeight: FontWeight.w500,
+//                                       fontSize: 14.sp,
+//                                       color: primaryColor,
+//                                     ),
+//                                   )
+//                                 ],
+//                               ),
+//                             ),
+//                             Spacer(),
+//                             Padding(
+//                               padding: const EdgeInsets.all(12.0),
+//                               child: AppButton(
+//                                 buttonText: "About book",
+//                                 textSize: 14.sp,
+//                                 buttonWidth: 117.w,
+//                                 textColor: Colors.white,
+//                                 backgroundColor: primaryColor,
+//                               ),
+//                             ),
+//                           ],
+//                         ),
+//                       ),
+//                     ),
+//                   )
+//                 ],
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 class BookDetails extends StatelessWidget {
   static const route = '/BookDetails';
-  const BookDetails({Key? key}) : super(key: key);
+  BookDetails({Key? key, this.book}) : super(key: key);
+
+  BookModel? book;
 
   @override
   Widget build(BuildContext context) {
+    String description = book!.title ?? " No About";
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -140,8 +144,7 @@ class BookDetails extends StatelessWidget {
                           padding: const EdgeInsets.only(left: 15),
                           child: InkWell(
                             onTap: () {
-                              Navigator.of(context)
-                                  .pushReplacementNamed(Home.route);
+                              Navigator.of(context).pop();
                             },
                             child: SizedBox(
                               width: 40.w,
@@ -167,8 +170,9 @@ class BookDetails extends StatelessWidget {
                     ),
                     Align(
                       alignment: Alignment.topCenter,
-                      child: Image.asset(
-                        "assets/images/testimage.png",
+                      child: Image.network(
+                        book!.imageLinks!.smallThumbnail ??
+                            "http://books.google.com/books/content?id=kQUVAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
                         width: 170.w,
                         height: 270.h,
                       ),
@@ -184,30 +188,39 @@ class BookDetails extends StatelessWidget {
                               horizontal: 16, vertical: 8),
                           child: Row(
                             children: [
-                              RichText(
-                                text: TextSpan(
-                                  text: 'The Psychology of Money \n',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 16.sp,
-                                    height: 24 / 16,
-                                    color: Colors.white,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 200.w,
+                                    child: Text(
+                                      book!.title ?? " No Title",
+                                      maxLines: 1,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 16.sp,
+                                        height: 24 / 16,
+                                        color: Colors.white,
+                                      ),
+                                    ),
                                   ),
-                                  children: [
-                                    TextSpan(
-                                      text: 'Morgan Housel',
+                                  Container(
+                                    child: Text(
+                                      book!.authors!.isNotEmpty
+                                          ? book!.authors![0]
+                                          : 'Author',
                                       style: TextStyle(
                                         fontWeight: FontWeight.w500,
                                         fontSize: 14.sp,
                                         color: primaryColor,
                                       ),
-                                    )
-                                  ],
-                                ),
+                                    ),
+                                  ),
+                                ],
                               ),
                               Spacer(),
                               Padding(
-                                padding: const EdgeInsets.all(12.0),
+                                padding: const EdgeInsets.all(8.0),
                                 child: AppButton(
                                   buttonText: "Read",
                                   textSize: 14.sp,
@@ -233,16 +246,16 @@ class BookDetails extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     TextandNum(
-                      num: 200,
-                      text: "Pages",
+                      num: book!.publishedDate ?? 23,
+                      text: "Published Date",
                     ),
                     TextandNum(
-                      num: 10,
-                      text: "Hours",
+                      num: book!.averageRating ?? "--",
+                      text: "Rating",
                     ),
                     TextandNum(
-                      num: 4.5,
-                      text: "Ratings",
+                      num: book!.pageCount ?? 23,
+                      text: "Page Count",
                     ),
                   ],
                 ),
@@ -268,13 +281,7 @@ class BookDetails extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
                 child: Text(
-                  '''Lörem ipsum onde decivån resm. Jång vogt, som sogon om heterofösamma inte nenera polysåras. Tina prenas, bevosam jåsäde att änågt, såväl som voplarar. Tivoment ineledes dengen. 
-Teler jånen dåräsade diaspeheten nen exonera. Jobel krosärtad spefasärar falanat i migen syskapet nessade nyda. Sosenera åkropp år den fämugt pseudogt. Årade prenas mimiska trespevis sadok bör och varysk. 
-Suprese trere i seför kvasilig har fölogi, i sakrovis jag vick. Biska lande pur reabårade: nilig. Jösönat reräsesk vigon i ospen gigasa. Epir vajåra och läng. 
-Realig nåliga: fasest bevis helun i dist inklusive hejåbel. Soliga såse än trit tektiga nibyplare, inte syr. Säbåpp homoska söns dålig för hening, is. Kigisk åtissade respektive ivis, suprartad, dän diktigt sädängar. 
-Mikross depodat, multina åliga samt al. Läkron täse nåde de ången om debylogi i ism för opp. Prerade diagram, negisk. Bioras bessa viren till tisa plada ifall megasärade spena osm. 
-Båspesade jåtätt dålig, poner multiponera nisk. Sans sese infrafasat i posök, det vill säga polys, i faskapet. Fås prelulavis spevott. Våning sunifåbåsk, mar pengar: lalasaling terralogi i pär. 
-,''',
+                  ''' $description ''',
                   textAlign: TextAlign.justify,
                   style: GoogleFonts.poppins(
                     color: Colors.black,
@@ -293,12 +300,12 @@ Båspesade jåtätt dålig, poner multiponera nisk. Sans sese infrafasat i posö
 }
 
 class TextandNum extends StatelessWidget {
-  const TextandNum({
+  TextandNum({
     Key? key,
     this.num,
     this.text,
   }) : super(key: key);
-  final double? num;
+  var num;
   final String? text;
 
   @override
@@ -306,21 +313,21 @@ class TextandNum extends StatelessWidget {
     return Column(
       children: [
         Text(
+          text!,
+          style: GoogleFonts.poppins(
+            color: Colors.black,
+            fontSize: 14.sp,
+            height: 24 / 16,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        Text(
           "$num",
           style: GoogleFonts.poppins(
             color: primaryColor,
             fontSize: 16.sp,
             height: 24 / 16,
             fontWeight: FontWeight.w700,
-          ),
-        ),
-        Text(
-          text!,
-          style: GoogleFonts.poppins(
-            color: Colors.black,
-            fontSize: 16.sp,
-            height: 24 / 16,
-            fontWeight: FontWeight.w300,
           ),
         ),
       ],

@@ -20,7 +20,6 @@ class SplashScreen extends StatelessWidget {
           end: Alignment.bottomCenter,
           colors: [
             HexColor("#EA9E2C").withOpacity(0.93),
-            HexColor("#EA9E2C").withOpacity(0.93),
             HexColor("#EA9E2C").withOpacity(0.60),
           ],
         )),

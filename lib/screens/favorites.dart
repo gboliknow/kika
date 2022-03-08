@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kika/components/bookcard.dart';
+import 'package:provider/provider.dart';
 
 import 'package:kika/components/color.dart';
+import 'package:kika/provider/books.dart';
 import 'package:kika/screens/homescreen.dart';
 
 class Favorites extends StatelessWidget {
@@ -29,122 +32,49 @@ class Favorites extends StatelessWidget {
           onTap: () {
             Navigator.of(context).pushReplacementNamed(Home.route);
           },
-          child: Padding(
-            padding: const EdgeInsets.only(left: 15),
-            child: SizedBox(
-              width: 40.w,
-              height: 40.h,
-              child: Image.asset(
-                "assets/images/back.png",
-                width: 20.w,
-                height: 20.h,
-              ),
+          child: SizedBox(
+            width: 30.w,
+            height: 30.h,
+            child: Image.asset(
+              "assets/images/back.png",
+              width: 20.w,
+              height: 20.h,
             ),
           ),
         ),
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 22),
-        child: Column(
-          children: [
-            BookInfo(
-              imgPath: "assets/images/testimage.png",
-              title: "Half of a yellow sun",
-              Description:
-                  "Half of a Yellow Sun is a novel by Nigerian author Chimamanda Ngozi Adichie. Published in 2006 by 4th Estate in London, the novel tells the story of the Biafran War through the perspective of the characters Olanna, Ugwu, and Richard",
-              Author: "Chimamanda Ngozi Adichie.",
-            ),
-            BookInfo(
-              imgPath: "assets/images/testimage.png",
-              title: "Half of a yellow sun",
-              Description:
-                  "Half of a Yellow Sun is a novel by Nigerian author Chimamanda Ngozi Adichie. Published in 2006 by 4th Estate in London, the novel tells the story of the Biafran War through the perspective of the characters Olanna, Ugwu, and Richard",
-              Author: "Chimamanda Ngozi Adichie.",
-            ),
-            BookInfo(
-              imgPath: "assets/images/testimage.png",
-              title: "Half of a yellow sun",
-              Description:
-                  "Half of a Yellow Sun is a novel by Nigerian author Chimamanda Ngozi Adichie. Published in 2006 by 4th Estate in London, the novel tells the story of the Biafran War through the perspective of the characters Olanna, Ugwu, and Richard",
-              Author: "Chimamanda Ngozi Adichie.",
-            ),
-          ],
+      body: ChangeNotifierProvider<BooksProvider>(
+        create: (context) => BooksProvider(),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 1.w),
+          child: Consumer<BooksProvider>(builder: (context, books, child) {
+            books.bookList();
+            return books.books == null
+                ? Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : ListView.builder(
+                    itemCount: books.books!.length,
+                    itemBuilder: (context, index) {
+                      String imgPath =
+                          books.books![index].imageLinks?.thumbnail ??
+                              'ImagePath';
+                      String author = books.books![index].authors != null &&
+                              books.books![index].authors!.isNotEmpty
+                          ? books.books![index].authors![0]
+                          : 'Author';
+                      String title = books.books![index].title ?? 'Title';
+                      String description =
+                          books.books![index].description ?? 'No description';
+                      return BookInfo(
+                        imgPath: imgPath,
+                        title: title,
+                        Author: author,
+                        Description: description,
+                      );
+                    });
+          }),
         ),
-      ),
-    );
-  }
-}
-
-class BookInfo extends StatelessWidget {
-  const BookInfo({
-    Key? key,
-    this.imgPath,
-    this.title,
-    this.Author,
-    this.Description,
-  }) : super(key: key);
-  final String? imgPath;
-  final String? title;
-
-  final String? Author;
-  final String? Description;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 104.h,
-      width: double.infinity,
-      margin: EdgeInsets.only(bottom: 8.h),
-      child: Row(
-        children: [
-          Image.asset(
-            imgPath!,
-            width: 104.w,
-            height: 140.h,
-          ),
-          SizedBox(
-            width: 5.w,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title!,
-                style: GoogleFonts.poppins(
-                  color: Colors.black,
-                  fontSize: 12.sp,
-                  height: 18 / 12,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              Container(
-                height: 54.h,
-                width: 225.w,
-                child: Text(
-                  Description!,
-                  softWrap: true,
-                  maxLines: 3,
-                  style: GoogleFonts.poppins(
-                    color: Colors.black,
-                    fontSize: 12.sp,
-                    height: 18 / 12,
-                    fontWeight: FontWeight.w300,
-                  ),
-                ),
-              ),
-              Spacer(),
-              Text(
-                Author!,
-                style: GoogleFonts.poppins(
-                  color: primaryColor,
-                  fontSize: 12.sp,
-                  height: 18 / 12,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ],
-          )
-        ],
       ),
     );
   }
