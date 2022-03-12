@@ -1,6 +1,7 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kika/provider/books.dart';
 import 'package:kika/screens/auth/login.dart';
 import 'package:kika/screens/book_details.dart';
 import 'package:kika/screens/favorites.dart';
@@ -8,9 +9,14 @@ import 'package:kika/screens/homescreen.dart';
 import 'package:kika/screens/onboarding.dart';
 import 'package:kika/screens/search.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider.value(
+      value: BooksProvider(),
+    ),
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -63,13 +69,7 @@ class MyApp extends StatelessWidget {
                     type: PageTransitionType.fade,
                     duration: Duration(milliseconds: 800),
                   );
-                case BookPreview.route:
-                  return PageTransition(
-                    child: BookPreview(),
-                    alignment: Alignment.center,
-                    type: PageTransitionType.fade,
-                    duration: Duration(milliseconds: 800),
-                  );
+
                 case Favorites.route:
                   return PageTransition(
                     child: Favorites(),
