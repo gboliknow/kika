@@ -18,7 +18,7 @@ class BookCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 190.h,
+      height: 155.h,
       width: 104.w,
       margin: EdgeInsets.only(left: 10.w),
       child: Padding(
@@ -53,7 +53,7 @@ class BookCard extends StatelessWidget {
               width: 104.w,
               child: Text(
                 title!,
-                maxLines: 2,
+                maxLines: 1,
                 style: GoogleFonts.poppins(
                   color: textColor,
                   fontSize: 10.sp,
@@ -62,20 +62,20 @@ class BookCard extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              height: 3.h,
-            ),
-            Expanded(
-              child: Text(
-                Author!,
-                style: GoogleFonts.poppins(
-                  color: primaryColor,
-                  fontSize: 12.sp,
-                  height: 14 / 12,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
+            // SizedBox(
+            //   height: 3.h,
+            // ),
+            // Expanded(
+            //   child: Text(
+            //     Author!,
+            //     style: GoogleFonts.poppins(
+            //       color: primaryColor,
+            //       fontSize: 12.sp,
+            //       height: 14 / 12,
+            //       fontWeight: FontWeight.w400,
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),

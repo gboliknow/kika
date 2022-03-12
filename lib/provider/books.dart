@@ -25,4 +25,13 @@ class BooksProvider extends ChangeNotifier {
     notifyListeners();
     return books;
   }
+
+  Future bookCategoryid(id) async {
+    await HttpRepos.booksApi.getBooksByID(id).then((value) {
+      books = value;
+    });
+
+    notifyListeners();
+    return books;
+  }
 }

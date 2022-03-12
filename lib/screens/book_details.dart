@@ -147,8 +147,8 @@ class BookDetails extends StatelessWidget {
                               Navigator.of(context).pop();
                             },
                             child: SizedBox(
-                              width: 40.w,
-                              height: 40.h,
+                              width: 20.w,
+                              height: 20.h,
                               child: Image.asset(
                                 "assets/images/back.png",
                                 width: 20.w,
@@ -171,7 +171,7 @@ class BookDetails extends StatelessWidget {
                     Align(
                       alignment: Alignment.topCenter,
                       child: Image.network(
-                        book!.imageLinks!.smallThumbnail ??
+                        book!.imageLinks?.smallThumbnail ??
                             "http://books.google.com/books/content?id=kQUVAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
                         width: 170.w,
                         height: 270.h,

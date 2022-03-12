@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:kika/components/bookcard.dart';
 
 import 'package:kika/components/color.dart';
-import 'package:kika/model/book_model.dart';
 import 'package:kika/provider/books.dart';
 import 'package:kika/screens/book_details.dart';
 import 'package:kika/screens/favorites.dart';
@@ -21,7 +20,7 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
-        elevation: 0,
+        elevation: 4,
         title: Text(
           'Kika',
           style: GoogleFonts.poppins(
@@ -74,13 +73,37 @@ class Home extends StatelessWidget {
             child: Column(
           children: [
             NewWidget(
-              genre: "Fiction",
+              genre: "Fantasy",
             ),
             SizedBox(
               height: 8,
             ),
             NewWidget(
               genre: "Science",
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            NewWidget(
+              genre: "Action",
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            NewWidget(
+              genre: "Biography",
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            NewWidget(
+              genre: "business",
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            NewWidget(
+              genre: "Crime",
             ),
             SizedBox(
               height: 8,
@@ -102,7 +125,7 @@ class NewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var booksProvider = Provider.of<BooksProvider>(context);
+    var booksProvider = Provider.of<BooksProvider>(context, listen: false);
     return Column(
       children: [
         SeeAll(
@@ -113,7 +136,7 @@ class NewWidget extends StatelessWidget {
           height: 10.h,
         ),
         SizedBox(
-            height: 220.h,
+            height: 200.h,
             child: FutureBuilder(
                 future: booksProvider.bookCategoryList("$genre"),
                 builder: (context, snapshot) {
@@ -122,8 +145,8 @@ class NewWidget extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       itemCount: booksProvider.books!.length,
                       itemBuilder: (context, index) {
-                        String imgPath =
-                            books[index].imageLinks?.thumbnail ?? 'ImagePath';
+                        String imgPath = books[index].imageLinks?.thumbnail ??
+                            'https://t4.ftcdn.net/jpg/00/89/55/15/240_F_89551596_LdHAZRwz3i4EM4J0NHNHy2hEUYDfXc0j.jpg';
                         String author = books[index].authors != null &&
                                 books[index].authors!.isNotEmpty
                             ? books[index].authors![0]
