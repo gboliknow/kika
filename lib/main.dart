@@ -2,6 +2,7 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kika/provider/books.dart';
+import 'package:kika/provider/search_book.dart';
 import 'package:kika/screens/auth/login.dart';
 import 'package:kika/screens/book_details.dart';
 import 'package:kika/screens/favorites.dart';
@@ -15,6 +16,9 @@ void main() {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider.value(
       value: BooksProvider(),
+    ),
+    ChangeNotifierProvider.value(
+      value: SearchProvider(),
     ),
   ], child: const MyApp()));
 }
