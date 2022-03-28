@@ -20,7 +20,7 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
-        elevation: 4,
+        elevation: 2,
         title: Text(
           'Kika',
           style: GoogleFonts.poppins(

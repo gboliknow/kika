@@ -76,7 +76,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       child: new TextField(
                         controller: searchController,
                         decoration: new InputDecoration(
-                            hintText: "What books are your looking to find?",
+                            hintText: "Search for titles,author or topics",
                             suffixIcon: new Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: InkWell(
