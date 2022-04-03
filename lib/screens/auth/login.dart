@@ -103,7 +103,7 @@ class Login extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 33.h,
+                height: 13.h,
               ),
               Text(
                 'Or',
@@ -115,7 +115,15 @@ class Login extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 33.h,
+                height: 13.h,
+              ),
+              AppButton(
+                onPressed: () {
+                  Navigator.of(context).pushReplacementNamed(Home.route);
+                },
+                buttonText: "Sign In as Guest",
+                backgroundColor: HexColor("#EA9E2C"),
+                textColor: HexColor("#F2F2F2"),
               ),
             ],
           ),

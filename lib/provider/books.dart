@@ -7,6 +7,8 @@ import 'package:kika/model/book_model.dart';
 class BooksProvider extends ChangeNotifier {
   List<BookModel>? books = [];
 
+  List<BookModel>? sciencebooks = [];
+
   bookList() async {
     await HttpRepos.booksApi.getBooks().then((value) {
       books = value;
@@ -25,6 +27,11 @@ class BooksProvider extends ChangeNotifier {
     notifyListeners();
     return books;
   }
+
+  // void clearSearch() {
+  //   searchbooks!.clear();
+  //   notifyListeners();
+  // }
 
   Future bookCategoryid(id) async {
     await HttpRepos.booksApi.getBooksByID(id).then((value) {

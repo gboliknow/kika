@@ -241,7 +241,7 @@ class BookDetails extends StatelessWidget {
                 height: 26.h,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30.w),
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -261,15 +261,15 @@ class BookDetails extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 5.h,
+                height: 10.h,
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
                 child: Text(
-                  "About Book",
+                  "Synopsis",
                   style: GoogleFonts.poppins(
                     color: Colors.black,
-                    fontSize: 16.sp,
+                    fontSize: 14.sp,
                     height: 24 / 16,
                     fontWeight: FontWeight.w600,
                   ),
@@ -285,9 +285,8 @@ class BookDetails extends StatelessWidget {
                   textAlign: TextAlign.justify,
                   style: GoogleFonts.poppins(
                     color: Colors.black,
-                    fontSize: 14.sp,
-                    height: 21 / 14,
-                    fontWeight: FontWeight.w300,
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ),
@@ -316,18 +315,16 @@ class TextandNum extends StatelessWidget {
           text!,
           style: GoogleFonts.poppins(
             color: Colors.black,
-            fontSize: 14.sp,
-            height: 24 / 16,
-            fontWeight: FontWeight.w500,
+            fontSize: 12.sp,
+            fontWeight: FontWeight.w400,
           ),
         ),
         Text(
           "$num",
           style: GoogleFonts.poppins(
             color: primaryColor,
-            fontSize: 16.sp,
-            height: 24 / 16,
-            fontWeight: FontWeight.w700,
+            fontSize: 13.sp,
+            fontWeight: FontWeight.w500,
           ),
         ),
       ],

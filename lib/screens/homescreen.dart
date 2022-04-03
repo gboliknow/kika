@@ -20,7 +20,7 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
-        elevation: 4,
+        elevation: 2,
         title: Text(
           'Kika',
           style: GoogleFonts.poppins(
@@ -75,39 +75,39 @@ class Home extends StatelessWidget {
             NewWidget(
               genre: "Fantasy",
             ),
-            SizedBox(
-              height: 8,
-            ),
-            NewWidget(
-              genre: "Science",
-            ),
-            SizedBox(
-              height: 8,
-            ),
-            NewWidget(
-              genre: "Action",
-            ),
-            SizedBox(
-              height: 8,
-            ),
-            NewWidget(
-              genre: "Biography",
-            ),
-            SizedBox(
-              height: 8,
-            ),
-            NewWidget(
-              genre: "business",
-            ),
-            SizedBox(
-              height: 8,
-            ),
-            NewWidget(
-              genre: "Crime",
-            ),
-            SizedBox(
-              height: 8,
-            ),
+            // SizedBox(
+            //   height: 8,
+            // ),
+            // NewWidget(
+            //   genre: "Science",
+            // ),
+            // SizedBox(
+            //   height: 8,
+            // ),
+            // NewWidget(
+            //   genre: "Action",
+            // ),
+            // SizedBox(
+            //   height: 8,
+            // ),
+            // NewWidget(
+            //   genre: "Biography",
+            // ),
+            // SizedBox(
+            //   height: 8,
+            // ),
+            // NewWidget(
+            //   genre: "business",
+            // ),
+            // SizedBox(
+            //   height: 8,
+            // ),
+            // NewWidget(
+            //   genre: "Crime",
+            // ),
+            // SizedBox(
+            //   height: 8,
+            // ),
           ],
         )),
       ),
