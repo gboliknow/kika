@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:kika/components/bookcard.dart';
-import 'package:kika/provider/books.dart';
 import 'package:kika/provider/search_book.dart';
 import 'package:kika/screens/book_details.dart';
-import 'package:kika/screens/homescreen.dart';
 import 'package:provider/provider.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -40,15 +38,23 @@ class _SearchScreenState extends State<SearchScreen> {
       context,
     );
 
-    return ChangeNotifierProvider<SearchProvider>(
-      create: (context) => SearchProvider(),
+    return WillPopScope(
+      //Added this to capture when user press android back button
+      //The list would be clear before popping the screen
+      onWillPop: () async {
+        searchProvider.clearList();
+        return true;
+      },
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0,
           leading: InkWell(
             onTap: () {
-              Navigator.of(context).pushReplacementNamed(Home.route);
+              Navigator.of(context).pop();
+              //When user tap on back button, call the clearList function to
+              //clear the list
+              searchProvider.clearList();
             },
             child: Padding(
               padding: const EdgeInsets.only(left: 15),

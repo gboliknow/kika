@@ -110,7 +110,7 @@ class Onboarding extends StatelessWidget {
               ),
               AppButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed(Login.route);
+                  Navigator.of(context).pushReplacementNamed(Login.route);
                 },
                 buttonText: "Get Started",
                 backgroundColor: HexColor("#EA9E2C"),

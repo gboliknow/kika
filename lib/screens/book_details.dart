@@ -206,9 +206,7 @@ class BookDetails extends StatelessWidget {
                                   ),
                                   Container(
                                     child: Text(
-                                      book!.authors!.isNotEmpty
-                                          ? book!.authors![0]
-                                          : 'Author',
+                                      book!.authors?.first ?? "No Author",
                                       style: TextStyle(
                                         fontWeight: FontWeight.w500,
                                         fontSize: 14.sp,
