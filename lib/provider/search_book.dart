@@ -17,4 +17,11 @@ class SearchProvider extends ChangeNotifier {
     notifyListeners();
     return searchbooks;
   }
+
+  //Added this function to clear the content of the searchBooks list
+  //And then notify listeners afterward
+  void clearList() {
+    searchbooks!.clear();
+    notifyListeners();
+  }
 }
