@@ -132,6 +132,8 @@ class BookInfo extends StatelessWidget {
               ),
               Text(
                 Author!,
+                softWrap: true,
+                overflow: TextOverflow.ellipsis,
                 style: GoogleFonts.poppins(
                   color: primaryColor,
                   fontSize: 12.sp,

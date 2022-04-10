@@ -59,19 +59,19 @@ class Home extends StatelessWidget {
           SizedBox(
             width: 12.w,
           ),
-          GestureDetector(
-            onTap: () {
-              Navigator.of(context).pushReplacementNamed(Favorites.route);
-            },
-            child: Image.asset(
-              "assets/images/favorite.png",
-              width: 16.w,
-              height: 16.h,
-            ),
-          ),
-          SizedBox(
-            width: 12.w,
-          ),
+          // GestureDetector(
+          //   onTap: () {
+          //     Navigator.of(context).pushReplacementNamed(Favorites.route);
+          //   },
+          //   child: Image.asset(
+          //     "assets/images/favorite.png",
+          //     width: 16.w,
+          //     height: 16.h,
+          //   ),
+          // ),
+          // SizedBox(
+          //   width: 12.w,
+          // ),
         ],
       ),
       body: Padding(
@@ -80,7 +80,7 @@ class Home extends StatelessWidget {
             child: Column(
           children: [
             NewWidget(
-              genre: "Fantasy",
+              genre: "Fiction",
             ),
             SizedBox(
               height: 8,
