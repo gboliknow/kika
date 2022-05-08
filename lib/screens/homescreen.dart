@@ -115,6 +115,30 @@ class Home extends StatelessWidget {
             SizedBox(
               height: 8,
             ),
+            NewWidget(
+              genre: "Nigeria",
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            NewWidget(
+              genre: "Technology",
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            NewWidget(
+              genre: "Flutter",
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            NewWidget(
+              genre: "High School",
+            ),
+            SizedBox(
+              height: 8,
+            )
           ],
         )),
       ),
