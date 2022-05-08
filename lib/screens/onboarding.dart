@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:kika/components/appbutton.dart';
 import 'package:kika/screens/auth/login.dart';
+import 'package:kika/screens/homescreen.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -110,7 +111,7 @@ class Onboarding extends StatelessWidget {
               ),
               AppButton(
                 onPressed: () {
-                  Navigator.of(context).pushReplacementNamed(Login.route);
+                  Navigator.of(context).pushReplacementNamed(Home.route);
                 },
                 buttonText: "Get Started",
                 backgroundColor: HexColor("#EA9E2C"),
